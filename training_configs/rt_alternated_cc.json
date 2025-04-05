@@ -1,0 +1,20 @@
+{
+    "reset_training_loss": true,
+    "alternate_tasks": false,
+    "task": "proponly",
+    "cc_loss": false,
+    "property_tokens": [
+        "<rt>"
+    ],
+    "alternate_steps": 50,
+    "checkpoint-str": "best",
+    "cg_collator": "vanilla_cg",
+    "cg_collator_params": {
+        "do_sample": false,
+        "property_tokens": [
+            "<rt>"
+        ],
+        "plm_probability": 0.2,
+        "max_span_length": 5
+    }
+}
