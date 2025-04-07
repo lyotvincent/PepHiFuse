@@ -40,10 +40,6 @@ CUDA_VISIBLE_DEVICES=0 python scripts/eval_language_modeling.py --output_dir res
 --eval_file example/eval.txt --eval_accumulation_steps 1 --param_path configs/config_for_rt_task_eval.json
 ```
 
-## Acknowledgements
-
-Our code references [IBM/regression-transformer](https://github.com/IBM/regression-transformer), we thank all their contributors and maintainers!
-
 ## Contact
 
 If you have any problems, just raise an issue in this repo.
