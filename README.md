@@ -9,14 +9,16 @@ Using Docker: Download and run the docker image. Ensure you have [Docker](https:
 ```shell
 docker pull lyrmagical/pephifuse
 docker run -it [--gpus all] --name pephifuse lyrmagical/pephifuse /bin/bash
+git clone https://github.com/lyotvincent/PepHiFuse
 ```
 [--gpus all] requires the installation of [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-container-toolkit), which allows users to run GPU accelerated containers.
 
 ### 2. Set up third-party libraries and generate data.
 
-Download [ProtT5-XL-UniRef50 model](https://huggingface.co/Rostlab/prot_t5_xl_uniref50) and put it under the PepHiFuse folder.
+Download [ProtT5-XL-UniRef50](https://huggingface.co/Rostlab/prot_t5_xl_uniref50) model and put it under the PepHiFuse folder.
 ```shell
 mv prot_t5_xl_uniref50 PepHiFuse
+cd PepHiFuse
 ```
 An example input data is available in the `example` folder. The input data should have at least 2 columns `x` and `y` in a **`tab-delimited text format`**. The `x` column contains peptide sequences and `y` column contains retention time. The unit of retention time is **minute**. To generate the training data, you can run the script as shown below.
 ```shell
