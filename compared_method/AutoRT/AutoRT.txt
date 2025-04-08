@@ -1,0 +1,2 @@
+python ./autort.py train -l 100 -m base_model/model.json -u m -i rt_data/SAL00141/SAL00141_train_eval.tsv -o SAL00141_models/
+python ./autort.py predict -t rt_data/SAL00141/SAL00141_test.tsv -s SAL00141_models/model.json -o SAL00141_prediction/ -p test

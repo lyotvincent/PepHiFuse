@@ -13,15 +13,19 @@ docker run -it [--gpus all] --name pephifuse lyrmagical/pephifuse /bin/bash
 [--gpus all] requires the installation of [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-container-toolkit), which allows users to run GPU accelerated containers.
 
 ### 2. Set up third-party libraries and generate data.
+
 Download [ProtT5-XL-UniRef50 model](https://huggingface.co/Rostlab/prot_t5_xl_uniref50) and put it under the PepHiFuse folder.
 ```shell
 mv prot_t5_xl_uniref50 PepHiFuse
+```
+An example input data is available in the `example` folder. The input data should have at least 2 columns `x` and `y` in a **`tab-delimited text format`**. The `x` column contains peptide sequences and `y` column contains retention time. The unit of retention time is **minute**. To generate the training data, you can run the script as shown below.
+```shell
 python scripts/generate_rt_data.py example/example.tsv example/train.txt --sample_ratio 0.8
 ```
 
 ### 3. Training a model.
-Example:
 
+You can launch a training by pointing to train and eval data:
 ```shell
 CUDA_VISIBLE_DEVICES=0 python scripts/run_language_modeling.py --model_type xlnet --output_dir results \
     --config_name configs/config_for_rt_task.json --tokenizer_name vocabs/rt_vocab.txt \
@@ -33,8 +37,8 @@ CUDA_VISIBLE_DEVICES=0 python scripts/run_language_modeling.py --model_type xlne
 ```
 
 ### 4. Evaluating a model.
-Example:
 
+To evaluate a model trained, run the following:
 ```shell
 CUDA_VISIBLE_DEVICES=0 python scripts/eval_language_modeling.py --output_dir results \
 --eval_file example/eval.txt --eval_accumulation_steps 1 --param_path configs/config_for_rt_task_eval.json
