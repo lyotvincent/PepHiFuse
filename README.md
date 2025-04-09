@@ -8,7 +8,7 @@ Adaptive Fusion of Global and Local Representations for Neoantigen Retention Tim
 Using Docker: Download and run the docker image. Ensure you have [Docker](https://docs.docker.com/desktop/install/ubuntu/) installed.
 ```shell
 docker pull lyrmagical/pephifuse
-docker run -it [--gpus all] --name pephifuse lyrmagical/pephifuse /bin/bash
+docker run -it [--gpus all] --network host --name pephifuse lyrmagical/pephifuse /bin/bash
 git clone https://github.com/lyotvincent/PepHiFuse
 ```
 [--gpus all] requires the installation of [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-container-toolkit), which allows users to run GPU accelerated containers.
